@@ -11,7 +11,6 @@ const SingleProduct = () => {
     const [error, setError] = useState(null);
     const route = useRoute();
     const navigation = useNavigation();
-    const [showPlusMinus, setShowPlusMinus] = useState(false);
 
     const productId = route.params?.productData?.id;
 
@@ -125,17 +124,20 @@ const SingleProduct = () => {
                         Details: {SingleData?.description}
                     </Text>
 
+                    <TouchableOpacity onPress={createCart} style={{
+                        backgroundColor: '#677D6A',
+                        height: 40,
+                        width: '30%',
+                        borderRadius: 8,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignSelf: 'center',
+                        marginTop: 20
 
-                    <TouchableOpacity onPress={createCart} style={{ ...styles.buttonStyle, backgroundColor: '#677D6A' }}>
-                        <Icon name={showPlusMinus ? 'plus' : 'shoppingcart'} type='AntDesign' color={'#fff'} size={18} />
-                        {showPlusMinus && <Icon name='minus' type='AntDesign' color={'#fff'} size={18} />}
+                    }}>
+                        <Icon name='shoppingcart' type='AntDesign' color={'#fff'} size={18} />
                     </TouchableOpacity>
-                    {showPlusMinus && (
-                        <TouchableOpacity onPress={() => { }} style={{ ...styles.buttonStyle, backgroundColor: '#677D6A', marginTop: 20 }}>
-                            <Text style={{ color: '#fff', fontSize: 18 }}>Next</Text>
-                        </TouchableOpacity>
-                    )}
-
+                    
 
                     <TouchableOpacity onPress={() => navigation.navigate('FetchAllProduct', { AllProduct: SingleData, })} style={{
                         backgroundColor: '#677D6A',
@@ -158,14 +160,4 @@ const SingleProduct = () => {
 
 export default SingleProduct
 
-const styles = StyleSheet.create({
-    buttonStyle: {
-        height: 40,
-        width: '30%',
-        borderRadius: 8,
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'center',
-        marginTop: 20
-    }
-})
+const styles = StyleSheet.create({})
