@@ -2,6 +2,7 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import React, { useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import axios from 'axios';
+import { Icon } from 'react-native-basic-elements';
 
 const FetchAllProduct = () => {
 
@@ -53,31 +54,56 @@ const FetchAllProduct = () => {
 
                     <View>
                         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            {CartList && CartList.data && CartList.data.products ? (
-                <View style={styles.container}>
-                    {CartList.data.products.map((item, index) => (
-                        <View key={index} >
-                            <Image
-                                source={require('../image/rttr.jpg')}
-                                style={{height: 250, width: '90%', alignSelf: 'center', marginTop: 20, marginBottom: 20}}
-                                resizeMode='cover'
-                            />
-                            <Text style={{ fontSize: 18,
-                        color: '#000',
-                        marginTop: 10,
-                        marginHorizontal: 20,
-                        maxWidth: '90%'}}>
-                                Product ID: {item.productId}
-                            </Text>
-                        </View>
-                    ))}
-                </View>
-            ) : (
-                <Text style={styles.noDataText}>
-                    No data available.
-                </Text>
-            )}
-        </ScrollView>
+                            {CartList && CartList.data && CartList.data.products ? (
+                                <View style={styles.container}>
+                                    {CartList.data.products.map((item, index) => (
+                                        <View key={index} >
+                                            <Image
+                                                source={require('../image/rttr.jpg')}
+                                                style={{ height: 150, width: '90%', alignSelf: 'center', marginTop: 10, marginBottom: 20 }}
+                                                resizeMode='cover'
+                                            />
+                                            <View style={{ flexDirection: 'row' }}>
+                                                <Text style={{
+                                                    fontSize: 18,
+                                                    color: '#000',
+                                                    marginTop: 5,
+                                                    marginHorizontal: 20,
+                                                    maxWidth: '90%'
+                                                }}>
+                                                    Product ID: {item.productId}
+                                                </Text>
+                                                <TouchableOpacity style={{
+                                                    backgroundColor: '#677D6A',
+                                                    height: 40,
+                                                    width: '30%',
+                                                    borderRadius: 8,
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    alignSelf: 'center',
+                                                }}>
+
+                                                    <View style={{flexDirection: 'row',}}>
+                                                        <View style={{ paddingLeft: 20}}>
+                                                        <Icon name='plus' type='AntDesign' color={'#fff'} size={18} />
+                                                        </View>
+                                                    
+                                                        <View style={{ paddingLeft: 30}}>
+                                                        <Icon name='plus' type='AntDesign' color={'#fff'} size={18} />
+                                                        </View>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+
+                                        </View>
+                                    ))}
+                                </View>
+                            ) : (
+                                <Text style={styles.noDataText}>
+                                    No data available.
+                                </Text>
+                            )}
+                        </ScrollView>
 
                         <TouchableOpacity onPress={() => navigation.navigate('Home')} style={{
                             backgroundColor: '#677D6A',

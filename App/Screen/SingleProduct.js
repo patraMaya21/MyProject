@@ -138,7 +138,6 @@ const SingleProduct = () => {
                         <Icon name='shoppingcart' type='AntDesign' color={'#fff'} size={18} />
                     </TouchableOpacity>
                     
-
                     <TouchableOpacity onPress={() => navigation.navigate('FetchAllProduct', { AllProduct: SingleData, })} style={{
                         backgroundColor: '#677D6A',
                         height: 40,
